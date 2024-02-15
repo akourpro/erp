@@ -1,0 +1,20 @@
+# auto include
+php_value auto_prepend_file admin/autoload.php
+php_value auto_append_file admin/footer.php
+
+#Routes
+RewriteEngine On
+
+RewriteRule ^options/?$ settings.php [QSA,L]
+
+# Users files
+RewriteRule ^employees/?$ users/allUsers.php [QSA,L]
+RewriteRule ^employees/new/?$ users/newUser.php [QSA,L]
+RewriteRule ^employees/search/?$ users/search.php [QSA,L]
+RewriteRule ^employees/reports/?$ users/reports.php [QSA,L]
+RewriteRule ^employees/logs/?$ users/logsUser.php [QSA,L]
+
+#file without ext
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
