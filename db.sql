@@ -3,7 +3,7 @@
 -- Host: localhost	Database: erp
 -- ------------------------------------------------------
 -- Server version 	10.4.32-MariaDB
--- Date: Tue, 13 Feb 2024 18:27:10 +0300
+-- Date: Sun, 18 Feb 2024 19:20:12 +0300
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -28,7 +28,7 @@ CREATE TABLE `settings` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,12 +38,12 @@ CREATE TABLE `settings` (
 LOCK TABLES `settings` WRITE;
 /*!40000 ALTER TABLE `settings` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `settings` VALUES (1,'siteName','نظام الموراد البشرية'),(2,'description','هذا نص تجريبي');
+INSERT INTO `settings` VALUES (1,'siteName','نظام الفيصل ابو زيتون'),(2,'description','باشراف المطور: عمر المصري'),(3,'logo','logo.jpeg'),(4,'email','fatima@gmail.com'),(5,'metaTags','هداية تيسير, براءة عصام,'),(6,'status','1');
 /*!40000 ALTER TABLE `settings` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `settings` with 2 row(s)
+-- Dumped table `settings` with 6 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 13 Feb 2024 18:27:10 +0300
+-- Dump completed on: Sun, 18 Feb 2024 19:20:12 +0300

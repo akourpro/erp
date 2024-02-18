@@ -54,6 +54,7 @@
             font-style: normal;
         }
     </style>
+    <script src="../js/sweetalert2.all.min.js"></script>
 </head>
 
 <body dir="rtl">
