@@ -8,6 +8,7 @@
 gsite();
 
 if (isset($_POST['update'])) {
+    $csrf->verify();
     $siteName = safer($_POST['siteName']);
     $description = safer($_POST['description']);
     $email = safer($_POST['email']);
@@ -110,7 +111,9 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-
+                        <?php
+                        $csrf->input();
+                        ?>
 
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label"></label>
