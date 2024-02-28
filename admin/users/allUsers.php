@@ -1,3 +1,18 @@
+<?php
+$user_id = numer($_GET['id']);
+$action = safer($_GET['action']);
+if (!empty($user_id) and !empty($action) and $action == "remove") {
+    dbSelect("users", "id", "WHERE id = ? LIMIT 1", [$user_id]);
+    if ($countrows == 1) {
+        dbDelete("users", "WHERE id = ? LIMIT 1", [$user_id]);
+        sweet("success", "نجاح", "تم حذف الموظف بنجاح", "employees");
+        die();
+    } else {
+        sweet("error", "خطأ", "الموظف غير موجود", "employees");
+        die();
+    }
+}
+?>
 <section class="section">
 
     <div class="row">
@@ -45,7 +60,7 @@
                     <td>' . $gender . '</td>
                     <td>' . $row['phone'] . '</td>
                     <td>
-                        <span class="btn btn-danger btn-sm" title="حذف"><i class="bi bi-trash"></i></span>
+                        <a href="employees/' . $row['id'] . '/remove" class="btn btn-danger btn-sm" title="حذف"><i class="bi bi-trash"></i></a>
                         <a href="employees/' . $row['id'] . '/edit" class="btn btn-warning btn-sm" title="تحرير الموظف"><i class="bi bi-pencil-fill"></i></a>
                     </td>
                 </tr>
