@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
+<?php gsite(); ?>
 
 <head>
     <meta charset="utf-8">
@@ -7,9 +8,8 @@
     <base href="http://localhost/erp/admin/">
     <meta name="_csrf" content="<?php echo $csrf->header(); ?>">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <title><?php echo $site['siteName'] ?></title>
+    <meta content="<?php echo $site['description'] ?>" name="description">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -64,8 +64,8 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
-                <img src="assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">مشروع</span>
+                <img src="../files/<?php echo $site['logo']; ?>" alt="">
+                <span class="d-none d-lg-block"><?php echo $site['siteName']; ?></span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
