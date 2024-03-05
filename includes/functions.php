@@ -223,7 +223,7 @@ function login_admin($user_email, $user_pass)
 	if (strlen(hash('sha512', $user_pass)) != 128) {
 		return false;
 	}
-	dbSelect("admins", "id, username, email, password", "WHERE email=? LIMIT 1", [$user_email]);
+	dbSelect("admins", "*", "WHERE email = ? AND status = ? LIMIT 1", [$user_email, 1]);
 	if ($countrows == 1) {
 		$user_id = $rows[0]["id"];
 		$db_password = $rows[0]["password"];

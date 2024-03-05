@@ -19,6 +19,7 @@ RewriteRule ^employees/logs/?$ users/logsUser.php [QSA,L]
 RewriteRule ^employees/([0-9]+)/edit/?$ users/editUser.php?id=$1 [QSA,L]
 # RewriteRule ^file/([0-9]+)/?$ folder/file.php?id=$1 [QSA,L]
 
+RewriteRule ^auth/login/?$ auth/login.php
 
 
 #file without ext

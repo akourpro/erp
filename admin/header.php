@@ -38,10 +38,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+
     <style>
+        @font-face {
+            font-family: "Cairo";
+            src: url('assets/fonts/Cairo-Light.ttf');
+        }
+
         body,
         h1,
         h2,
