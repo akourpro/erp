@@ -263,6 +263,16 @@ function guser()
 	dbSelect("users", "*", "WHERE id = ? LIMIT 1", [$_SESSION['user_id']]);
 	$user = $rows[0];
 }
+/**
+ * جلب معلومات المستخدم
+ */
+function gadmin()
+{
+	global $rows;
+	global $admin;
+	dbSelect("admins", "*", "WHERE id = ? LIMIT 1", [$_SESSION['user_id']]);
+	$admin = $rows[0];
+}
 
 /**
  * تقوم هذه الوظيفة بالتحقق من نوع المدخلات وتعود بالناتج false في حال كان خطأ
@@ -773,13 +783,13 @@ function ago($datetime, $full = false)
 	$diff->{'w'} = floor($diff->d / 7);
 	$diff->{'d'} -= $diff->{'w'} * 7;
 	$string = array(
-		'y' => $lang['year'],
-		'm' => $lang['month'],
-		'w' => $lang['week'],
-		'd' => $lang['day'],
-		'h' => $lang['hour'],
-		'i' => $lang['minute'],
-		's' => $lang['second'],
+		'y' => "سنة",
+		'm' => "شهر",
+		'w' => "اسبوع",
+		'd' => "يوم",
+		'h' => "ساعة",
+		'i' => "دقيقة",
+		's' => "ثانية",
 	);
 
 	foreach ($string as $k => &$v) {
@@ -791,8 +801,8 @@ function ago($datetime, $full = false)
 	}
 
 	if (!$full) $string = array_slice($string, 0, 1);
-	$result = $string ? implode($lang['comma'] . ' ', $string)  : $lang['now'];
-	return $lang['since'] . " " . $result;
+	$result = $string ? implode("،" . ' ', $string)  : "الآن";
+	return "قبل" . " " . $result;
 }
 
 /**

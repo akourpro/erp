@@ -71,7 +71,21 @@ if (login_check_admin()) {
             $login = login_admin($email, $password);
             if ($login == "success") {
                 $date = date("Y-m-d H:i:s");
-                dbInsert("logs", "date, admin_id", [$date, $_SESSION['user_id']]);
+                // جلب اي بي الجهاز
+                $ip = getIP();
+                // جلب نظام الجهاز
+                $os = getOS();
+                // جلب نوع المتصفح
+                $brwoser = getBrowser();
+
+                // حفظ البيانات في مصفوفة
+                $login_info = array(
+                    "ip" => $ip,
+                    "os" => $os,
+                    "browser" => $brwoser
+                );
+
+                dbInsert("logs", "date, admin_id, login_info, action", [$date, $_SESSION['user_id'], serialize($login_info), "login"]);
                 // sweet("success", "نجاح", "تم الدخول بنجاح", "index");
                 // echo "نجح الدخول";
                 echo '<meta http-equiv="refresh" content="0;url=../" />';

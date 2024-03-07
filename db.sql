@@ -3,7 +3,7 @@
 -- Host: localhost	Database: erp
 -- ------------------------------------------------------
 -- Server version 	10.4.32-MariaDB
--- Date: Tue, 05 Mar 2024 18:32:13 +0300
+-- Date: Thu, 07 Mar 2024 18:33:11 +0300
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -58,6 +58,7 @@ CREATE TABLE `emp_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `action` varchar(255) DEFAULT NULL,
+  `login_info` text DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -87,8 +88,10 @@ CREATE TABLE `logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
   `admin_id` int(11) DEFAULT NULL,
+  `login_info` text DEFAULT NULL,
+  `action` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -98,12 +101,43 @@ CREATE TABLE `logs` (
 LOCK TABLES `logs` WRITE;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `logs` VALUES (1,'2024-03-05 18:20:08',1),(2,'2024-03-05 18:22:54',1);
+INSERT INTO `logs` VALUES (8,'2024-03-07 17:54:59',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','logout'),(9,'2024-03-07 17:55:14',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `logs` with 2 row(s)
+--
+
+--
+-- Table structure for table `punish`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `punish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `punish` varchar(255) DEFAULT NULL,
+  `note` text DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `punish`
+--
+
+LOCK TABLES `punish` WRITE;
+/*!40000 ALTER TABLE `punish` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `punish` VALUES (1,4,'عدم تحقيق الاهداف','عدم وصولك لعدد 100 من المبيعات المطلوبة منك','2024-03-07');
+/*!40000 ALTER TABLE `punish` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `punish` with 1 row(s)
 --
 
 --
@@ -154,7 +188,7 @@ CREATE TABLE `users` (
   `phone` varchar(20) DEFAULT NULL,
   `register_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,12 +198,12 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `users` VALUES (1,'Manal Ghunaim','231222','hi13213213@akour.me','12345678','female','2019-10-23','2023-01-01','92181dc5dffd5ab8a339e1fa02504d47.png','0781121317','2024-02-20 18:33:25'),(3,'M عمر المصري','999','213@akour.me','12345678','male','2019-10-23','2023-01-01','92181dc5dffd5ab8a339e1fa02504d47.png','0000000000','2024-02-20 18:33:25');
+INSERT INTO `users` VALUES (1,'Manal Ghunaim','231222','hi13213213@akour.me','12345678','female','2019-10-23','2023-01-01','92181dc5dffd5ab8a339e1fa02504d47.png','0781121317','2024-02-20 18:33:25'),(3,'M عمر المصري','999','213@akour.me','12345678','male','2019-10-23','2023-01-01','92181dc5dffd5ab8a339e1fa02504d47.png','0000000000','2024-02-20 18:33:25'),(4,'فاطمة عيسى','3123213','fatima@akour.me','$2y$10$TFeMIqnf/5Z.DgIpdjN1k.Hp3IBF7P6M1GgrdI2kevZhbY.iFL9JK','female','2024-03-05','2024-03-07','default.png','213213213123','2024-03-07 18:09:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `users` with 2 row(s)
+-- Dumped table `users` with 3 row(s)
 --
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -182,4 +216,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 05 Mar 2024 18:32:13 +0300
+-- Dump completed on: Thu, 07 Mar 2024 18:33:12 +0300

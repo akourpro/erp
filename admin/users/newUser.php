@@ -17,7 +17,14 @@ if (isset($_POST['add'])) {
     $date_join = safer($_POST['date_join']);
     $phone = numer($_POST['phone']);
 
+
+
     if (!empty($employee_id) and !empty($email) and !empty($password)) {
+
+        $password = hash("sha512", $password);
+
+        $password = password_hash($password, PASSWORD_BCRYPT);
+
 
         if (!empty($_FILES['image']['name'])) {
             $ImageNmae = genCode("users", "image", "token", 16);
