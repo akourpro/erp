@@ -4,25 +4,25 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">اعطاء عقوبة لموظف</h5>
+                    <h5 class="card-title">منح شهادة لموظف</h5>
 
                     <?php
 
                     if (isset($_POST['submit'])) {
                         $csrf->verify();
                         $employee = numer($_POST['employee']);
-                        $punish = safer($_POST['punish']);
+                        $degree = safer($_POST['degree']);
                         $note = safer($_POST['note']);
-                        if (!empty($employee) and !empty($punish)) {
-                            // ادراج العقوبة في قاعدة البيانات
-                            dbInsert("punish", "user_id, punish, note, date", [$employee, $punish, $note, date("Y-m-d")]);
+                        if (!empty($employee) and !empty($degree)) {
+                            // ادراج الشهادة في قاعدة البيانات
+                            dbInsert("degree", "user_id, degree, note, date", [$employee, $degree, $note, date("Y-m-d")]);
 
                             // ادراج الاشعار في قاعدة البيانات
-                            $alert_text = "تم اعطاؤك العقوبة: " . $punish;
+                            $alert_text = "تم منحك شهادة جديدة: " . $degree;
                             dbInsert("alerts", "user_id, text, seen, date", [$employee, $alert_text, 0, date("Y-m-d H:i:s")]);
 
                             // رسالة النجاح
-                            sweet("success", "نجاح", "تم اعطاء العقوبة للموظف بنجاح", "punish");
+                            sweet("success", "نجاح", "تم منح الشهادة للموظف بنجاح", "degree");
                         } else {
                             sweet("error", "خطأ", "اسم الموظف والسبب مطلوب");
                         }
@@ -46,21 +46,15 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">نوع العقوبة</label>
+                            <label class="col-sm-2 col-form-label">نوع الشهادة</label>
                             <div class="col-sm-10">
-                                <select class="form-control" name="punish" required>
-                                    <option value="تأخر">تأخر</option>
-                                    <option value="عدم تحقيق الاهداف">عدم تحقيق الاهداف</option>
-                                    <option value="النوم اثناء العمل">النوم اثناء العمل</option>
-                                    <option value="الخروج قبل انتهاء الدوام">الخروج قبل انتهاء الدوام</option>
-
-                                </select>
+                                <input type="text" class="form-control" name="degree" required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">سبب العقوبة</label>
+                            <label class="col-sm-2 col-form-label">سبب منح الشهادة</label>
                             <div class="col-sm-10">
-                                <textarea name="note" class="form-control" placeholder="سبب اعطاء الموظف هذه العقوبة"></textarea>
+                                <textarea name="note" class="form-control" placeholder="سبب اعطاء الموظف هذه الشهادة"></textarea>
                             </div>
                         </div>
 
@@ -72,7 +66,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label"></label>
                             <div class="col-sm-10">
-                                <input type="submit" class="btn btn-danger" value="اعطاء العقوبة" name="submit">
+                                <input type="submit" class="btn btn-success" value="منح الشهادة" name="submit">
                             </div>
                         </div>
 

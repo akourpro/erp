@@ -278,7 +278,7 @@ gadmin();
                         </a>
                     </li>
                     <li>
-                        <a href="components-alerts.html">
+                        <a href="degree">
                             <i class="bi bi-circle"></i><span>منح شهادة لموظف</span>
                         </a>
                     </li>

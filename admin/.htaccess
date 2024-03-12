@@ -29,6 +29,10 @@ RewriteRule ^auth/logout/?$ auth/logout.php
 RewriteRule ^punish/?$ punish/all.php [QSA,L]
 RewriteRule ^punish/new/?$ punish/new.php [QSA,L]
 
+# Degree
+RewriteRule ^degree/?$ degree/all.php [QSA,L]
+RewriteRule ^degree/new/?$ degree/new.php [QSA,L]
+
 #file without ext
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f

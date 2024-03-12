@@ -3,7 +3,7 @@
 -- Host: localhost	Database: erp
 -- ------------------------------------------------------
 -- Server version 	10.4.32-MariaDB
--- Date: Thu, 07 Mar 2024 18:33:11 +0300
+-- Date: Tue, 12 Mar 2024 14:27:31 +0300
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -49,6 +49,68 @@ COMMIT;
 --
 
 --
+-- Table structure for table `alerts`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `alerts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `seen` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `alerts`
+--
+
+LOCK TABLES `alerts` WRITE;
+/*!40000 ALTER TABLE `alerts` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `alerts` VALUES (1,3,'تم منحك شهادة جديدة: اتقان لغة PHP',0,'2024-03-12 14:19:29'),(2,1,'تم اعطاؤك العقوبة: الخروج قبل انتهاء الدوام',0,'2024-03-12 14:20:59');
+/*!40000 ALTER TABLE `alerts` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `alerts` with 2 row(s)
+--
+
+--
+-- Table structure for table `degree`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `degree` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `degree` varchar(255) DEFAULT NULL,
+  `note` text DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `degree`
+--
+
+LOCK TABLES `degree` WRITE;
+/*!40000 ALTER TABLE `degree` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `degree` VALUES (3,1,'البكالوريوس','تم منح شهادة البكالوريوس بسبب النجاح في الجامعة','2024-03-12'),(5,3,'اتقان لغة PHP','بسبب اجتيازك لدورة تعلم لغة PHP','2024-03-12');
+/*!40000 ALTER TABLE `degree` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `degree` with 2 row(s)
+--
+
+--
 -- Table structure for table `emp_logs`
 --
 
@@ -91,7 +153,7 @@ CREATE TABLE `logs` (
   `login_info` text DEFAULT NULL,
   `action` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,12 +163,12 @@ CREATE TABLE `logs` (
 LOCK TABLES `logs` WRITE;
 /*!40000 ALTER TABLE `logs` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `logs` VALUES (8,'2024-03-07 17:54:59',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','logout'),(9,'2024-03-07 17:55:14',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login');
+INSERT INTO `logs` VALUES (8,'2024-03-07 17:54:59',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','logout'),(9,'2024-03-07 17:55:14',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login'),(10,'2024-03-12 13:44:54',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login'),(11,'2024-03-12 13:45:37',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','logout'),(12,'2024-03-12 13:48:21',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login'),(13,'2024-03-12 14:05:39',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','logout'),(14,'2024-03-12 14:06:33',1,'a:3:{s:2:\"ip\";s:3:\"::1\";s:2:\"os\";s:10:\"Windows 10\";s:7:\"browser\";s:6:\"Chrome\";}','login');
 /*!40000 ALTER TABLE `logs` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `logs` with 2 row(s)
+-- Dumped table `logs` with 7 row(s)
 --
 
 --
@@ -122,7 +184,7 @@ CREATE TABLE `punish` (
   `note` text DEFAULT NULL,
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,12 +194,12 @@ CREATE TABLE `punish` (
 LOCK TABLES `punish` WRITE;
 /*!40000 ALTER TABLE `punish` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `punish` VALUES (1,4,'عدم تحقيق الاهداف','عدم وصولك لعدد 100 من المبيعات المطلوبة منك','2024-03-07');
+INSERT INTO `punish` VALUES (1,4,'عدم تحقيق الاهداف','عدم وصولك لعدد 100 من المبيعات المطلوبة منك','2024-03-07'),(2,1,'الخروج قبل انتهاء الدوام','خروجك قبل انتهاء الدوام بنصف ساعة','2024-03-12');
 /*!40000 ALTER TABLE `punish` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `punish` with 1 row(s)
+-- Dumped table `punish` with 2 row(s)
 --
 
 --
@@ -216,4 +278,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Thu, 07 Mar 2024 18:33:12 +0300
+-- Dump completed on: Tue, 12 Mar 2024 14:28:01 +0300
