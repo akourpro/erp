@@ -33,6 +33,10 @@ RewriteRule ^punish/new/?$ punish/new.php [QSA,L]
 RewriteRule ^degree/?$ degree/all.php [QSA,L]
 RewriteRule ^degree/new/?$ degree/new.php [QSA,L]
 
+# Rewards
+RewriteRule ^rewards/?$ rewards/all.php [QSA,L]
+RewriteRule ^rewards/new/?$ rewards/new.php [QSA,L]
+
 #file without ext
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f

@@ -283,6 +283,11 @@ gadmin();
                         </a>
                     </li>
                     <li>
+                        <a href="rewards">
+                            <i class="bi bi-circle"></i><span>منح حافز لموظف</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="components-alerts.html">
                             <i class="bi bi-circle"></i><span>موظف الشهر</span>
                         </a>
