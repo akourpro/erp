@@ -3,7 +3,7 @@
 -- Host: localhost	Database: erp
 -- ------------------------------------------------------
 -- Server version 	10.4.32-MariaDB
--- Date: Sat, 16 Mar 2024 14:14:54 +0300
+-- Date: Sat, 16 Mar 2024 14:36:28 +0300
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -77,6 +77,38 @@ UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `alerts` with 3 row(s)
+--
+
+--
+-- Table structure for table `contact_admin`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact_admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `text` text DEFAULT NULL,
+  `priority` int(11) DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact_admin`
+--
+
+LOCK TABLES `contact_admin` WRITE;
+/*!40000 ALTER TABLE `contact_admin` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `contact_admin` VALUES (1,1,'شكوى على عميل','حدث اليوم مشكلة بيني وبين أحد العملاء، يرجى التدخل لحل الموضوع',2,'2024-03-16 14:24:13');
+/*!40000 ALTER TABLE `contact_admin` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `contact_admin` with 1 row(s)
 --
 
 --
@@ -309,4 +341,4 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 16 Mar 2024 14:14:54 +0300
+-- Dump completed on: Sat, 16 Mar 2024 14:36:29 +0300

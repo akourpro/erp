@@ -37,6 +37,11 @@ RewriteRule ^degree/new/?$ degree/new.php [QSA,L]
 RewriteRule ^rewards/?$ rewards/all.php [QSA,L]
 RewriteRule ^rewards/new/?$ rewards/new.php [QSA,L]
 
+
+# Admin Contact
+RewriteRule ^acontact/?$ admin_contact/all.php [QSA,L]
+RewriteRule ^acontact/([0-9]+)/view/?$ admin_contact/view.php?id=$1 [QSA,L]
+
 #file without ext
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
